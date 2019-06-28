@@ -90,9 +90,9 @@ def run(args):
 if __name__ == "__main__":
     class Flags():
      def __init__(self):
-        self.data_dir = '/home/chakenal/pb-p3-chiron-tvm/test_data_raw'
-        self.cache_dir = '/home/chakenal/pb-p3-chiron-tvm/output_cache'
-        self.log_dir = '/home/chakenal/pb-p3-chiron-tvm'
+        self.data_dir = './test_data_raw'
+        self.cache_dir = './output_cache'
+        self.log_dir = './'
         self.sequence_len = 300
         self.batch_size = 400
         self.step_rate = 1e-3 
