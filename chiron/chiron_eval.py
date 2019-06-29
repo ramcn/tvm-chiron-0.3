@@ -54,17 +54,11 @@ def evaluation():
 
     #graph = load_graph("frozen_model.pb")
     graph = load_graph("optimized_model.pb")
-    #for op in graph.get_operations():
-    #    print(op.name)
     x = graph.get_tensor_by_name('prefix/Placeholder_1:0')
     y = graph.get_tensor_by_name('prefix/cnnlogits_rs:0')
 
 
-    #with tf.Session() as sess:
     with tf.Session(graph=graph) as sess:
-     #saver = tf.train.Saver()
-     print(FLAGS.model) 
-     #saver.restore(sess,tf.train.latest_checkpoint(FLAGS.model))
 
      file_list = os.listdir(FLAGS.input)
      file_dir = FLAGS.input
@@ -87,11 +81,8 @@ def evaluation():
              batch_x,seq_len,_ = eval_data.next_batch(FLAGS.batch_size,shuffle = False)
              batch_x=np.pad(batch_x,((0,FLAGS.batch_size-len(batch_x)),(0,0)),mode='constant')
              seq_len=np.pad(seq_len,((0,FLAGS.batch_size-len(seq_len))),mode='constant')
-             #feed_dict = {x:batch_x,seq_length:seq_len,training:False}
-             #logits_val = sess.run(logits,feed_dict = feed_dict)
              feed_dict = {x:batch_x}
-             #logits_val = sess.run(y,feed_dict = feed_dict)
-             #print(logits_val)
+             print(logits_val)
 
 def run(args):
     global FLAGS
